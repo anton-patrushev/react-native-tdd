@@ -1,6 +1,9 @@
 // yarn jest src/posts/redux/sagas/__tests__/posts.test.ts --coverage
 
-import { takeLatest, put, all, spawn } from 'redux-saga/effects';
+import DI from 'src/core/ioc/DI';
+import { Dependency } from 'src/core/ioc/types';
+
+import { takeLatest, put, all, spawn, call } from 'redux-saga/effects';
 
 import { GetPostsActionTypes } from '../../actions/types';
 import { getPostsActions } from '../../actions/posts';
@@ -39,10 +42,20 @@ describe('posts sagas', () => {
       expect(actualEffect).toStrictEqual(expectedEffect);
     });
 
-    it('should yield GetPostsActionTypes.SUCCESS effect', () => {
+    it('should call PostsRepository effect', () => {
       const actualEffect = gen.next().value;
 
-      const posts = fakePosts; // TODO: use fake repository
+      const expectedEffect = call(
+        DI.getDependency(Dependency.POSTS_REPOSITORY).getPosts,
+      );
+
+      expect(actualEffect).toStrictEqual(expectedEffect);
+    });
+
+    it('should yield GetPostsActionTypes.SUCCESS effect', () => {
+      const actualEffect = gen.next(fakePosts).value;
+
+      const posts = fakePosts;
 
       const expectedEffect = put(getPostsActions.success({ posts }));
 
