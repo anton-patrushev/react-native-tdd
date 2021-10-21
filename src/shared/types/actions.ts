@@ -1,6 +1,6 @@
 export enum AsyncActionType {
-  REQUEST = 'REQUEST',
-  LOADING = 'LOADING',
-  FAILURE = 'FAILURE',
-  SUCCESS = 'SUCCESS',
+  REQUEST = 'request',
+  LOADING = 'loading',
+  FAILURE = 'failure',
+  SUCCESS = 'success',
 }

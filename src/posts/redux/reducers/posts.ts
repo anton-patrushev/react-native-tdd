@@ -4,6 +4,8 @@ import { Post } from 'src/posts/data/types/post';
 
 import { GetPostsActionTypes } from 'src/posts/redux/actions/types';
 
+import normalizeData from 'src/shared/utils/normalizeData';
+
 interface IPostsReducerState {
   loading: boolean;
   data: {
@@ -30,10 +32,13 @@ const postsReducer = createReducer<IPostsReducerState>(initialState)
     loading: false,
     error: action.payload.errorMessage,
   }))
-  .handleType(GetPostsActionTypes.SUCCESS, state => ({
+  .handleType(GetPostsActionTypes.SUCCESS, (state, action) => ({
     ...state,
     loading: false,
-    data: { byId: {} }, // TODO
+    data: {
+      byId: normalizeData(action.payload.posts),
+      ids: action.payload.posts.map(it => it.id),
+    },
     error: null,
   }));
 

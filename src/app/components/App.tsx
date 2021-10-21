@@ -2,7 +2,7 @@ import React from 'react';
 
 import PostsList from 'src/posts/components/PostsList';
 
-import ReduxProvider from 'src/core/redux/providers/redux/Provider';
+import ReduxProvider from 'src/core/redux/provider/index';
 
 const App: React.FC = () => {
   return (
@@ -12,4 +12,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default React.memo(App);
