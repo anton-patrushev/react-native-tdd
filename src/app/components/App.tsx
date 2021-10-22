@@ -1,13 +1,13 @@
 import React from 'react';
 
-import PostsList from 'src/posts/components/PostsList';
+import FeedScreen from 'src/posts/screens/Feed';
 
 import ReduxProvider from 'src/core/redux/provider/index';
 
 const App: React.FC = () => {
   return (
     <ReduxProvider>
-      <PostsList />
+      <FeedScreen />
     </ReduxProvider>
   );
 };

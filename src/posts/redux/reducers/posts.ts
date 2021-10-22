@@ -1,19 +1,9 @@
 import { createReducer } from 'typesafe-actions';
 
-import { Post } from 'src/posts/data/types/post';
-
 import { GetPostsActionTypes } from 'src/posts/redux/actions/types';
+import { IPostsReducerState } from 'src/posts/redux/types/posts';
 
 import normalizeData from 'src/shared/utils/normalizeData';
-
-export interface IPostsReducerState {
-  loading: boolean;
-  data: {
-    byId: Record<Post['id'], Post>;
-    ids: Array<Post['id']>;
-  };
-  error: string | null;
-}
 
 const initialState: IPostsReducerState = {
   loading: false,

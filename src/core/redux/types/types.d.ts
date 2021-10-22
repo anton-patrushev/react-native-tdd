@@ -1,4 +1,4 @@
-import { StateType, ActionType } from 'typesafe-actions';
+import { StateType, ActionType, RootState } from 'typesafe-actions';
 
 // declare module 'MyTypes' {
 //   export type Store = StateType<typeof import('./index').default>;
@@ -19,4 +19,8 @@ declare module 'typesafe-actions' {
 
   export type RootState = Types['RootState'];
   // export type Store = Types['Store'];
+}
+
+declare module 'react-redux' {
+  interface DefaultRootState extends RootState {}
 }

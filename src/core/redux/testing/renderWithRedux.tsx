@@ -12,7 +12,7 @@ interface RenderWithReduxOptions {
 }
 
 export function renderWithRedux<P>(
-  component: React.ComponentType<P>,
+  component: React.ReactElement<P>,
   options: RenderWithReduxOptions,
 ) {
   const store = buildStore(options.state);

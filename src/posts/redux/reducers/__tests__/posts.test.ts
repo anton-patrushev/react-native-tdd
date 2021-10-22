@@ -1,8 +1,10 @@
 // yarn jest src/posts/redux/reducers/__tests__/posts.test.ts --coverage
 
 import { Post } from 'src/posts/data/types/post';
+
+import { IPostsReducerState } from 'src/posts/redux/types/posts';
 import { getPostsActions } from 'src/posts/redux/actions/posts';
-import postsReducer, { IPostsReducerState } from '../posts';
+import postsReducer from '../posts';
 
 describe('postsReducer', () => {
   const post1: Post = { id: 1, title: 't', body: 'value' };
