@@ -14,6 +14,6 @@ declare module 'typesafe-actions' {
   interface Types {
     RootAction: ActionType<typeof import('../actions').default>;
     // Store: StateType<typeof store>;
-    // RootState: StateType<ReturnType<typeof import('@/reducers').default>>;
+    RootState: StateType<ReturnType<typeof import('../reducers').default>>;
   }
 }

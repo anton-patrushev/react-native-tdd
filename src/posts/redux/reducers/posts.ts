@@ -6,7 +6,7 @@ import { GetPostsActionTypes } from 'src/posts/redux/actions/types';
 
 import normalizeData from 'src/shared/utils/normalizeData';
 
-interface IPostsReducerState {
+export interface IPostsReducerState {
   loading: boolean;
   data: {
     byId: Record<Post['id'], Post>;
