@@ -4,11 +4,15 @@ import DI from 'src/core/ioc/DI';
 import { Dependency } from 'src/core/ioc/types';
 
 import { takeLatest, put, all, spawn, call } from 'redux-saga/effects';
+import { runSaga } from '@redux-saga/core';
 
 import { GetPostsActionTypes } from '../../actions/types';
 import { getPostsActions } from '../../actions/posts';
 import postsSaga, { getPostsSaga, getPostsWorker } from '../posts';
+
 import { fakePosts } from 'src/posts/data/fakePosts';
+import { IPostsRepository } from 'src/posts/api/network/IPostsRepository';
+import { Post } from 'src/posts/data/types/post';
 
 describe('posts sagas', () => {
   // TODO: review and rewrite ?
@@ -32,37 +36,76 @@ describe('posts sagas', () => {
   });
 
   describe('getPostsWorker', () => {
-    const gen = getPostsWorker();
+    const postsRepository: IPostsRepository = DI.getDependency(
+      Dependency.POSTS_REPOSITORY,
+    );
 
-    it('should yield GetPostsActionTypes.LOADING effect', () => {
-      const actualEffect = gen.next().value;
+    let getPostsSpy: jest.SpyInstance<Promise<Post[]>, []>;
 
-      const expectedEffect = put(getPostsActions.loading());
-
-      expect(actualEffect).toStrictEqual(expectedEffect);
+    beforeEach(() => {
+      getPostsSpy = jest.spyOn(postsRepository, 'getPosts');
     });
 
-    it('should call PostsRepository effect', () => {
-      const actualEffect = gen.next().value;
+    afterEach(() => {
+      getPostsSpy.mockRestore();
+    });
 
-      const expectedEffect = call(
-        DI.getDependency(Dependency.POSTS_REPOSITORY).getPosts,
+    it('should successfully get posts and yield all required effects', async () => {
+      const mockedPosts: Array<Post> = [{ id: 0, title: 'test', body: 'body' }];
+      const dispatched: Array<any> = [];
+
+      getPostsSpy.mockImplementationOnce(() => Promise.resolve(mockedPosts));
+
+      const dispatch = jest.fn(action => dispatched.push(action));
+      await runSaga({ dispatch }, getPostsWorker as any).toPromise();
+
+      const expectedActions = [
+        getPostsActions.loading(),
+        getPostsActions.success({ posts: mockedPosts }),
+      ];
+
+      expect(dispatched).toStrictEqual(expectedActions);
+    });
+
+    it('should yield error action if PostsRepository failed', async () => {
+      const dispatched: Array<any> = [];
+
+      getPostsSpy.mockImplementationOnce(() =>
+        Promise.reject("Doesn't matter"),
       );
 
-      expect(actualEffect).toStrictEqual(expectedEffect);
+      const dispatch = jest.fn(action => dispatched.push(action));
+      await runSaga({ dispatch }, getPostsWorker as any).toPromise();
+
+      const expectedActions = [
+        getPostsActions.loading(),
+        getPostsActions.failure({ errorMessage: 'Something went wrong' }), // TODOß
+      ];
+
+      expect(dispatched).toStrictEqual(expectedActions);
     });
 
-    it('should yield GetPostsActionTypes.SUCCESS effect', () => {
-      const actualEffect = gen.next(fakePosts).value;
+    // it('should call PostsRepository effect', () => {
+    //   const actualEffect = gen.next().value;
 
-      const posts = fakePosts;
+    //   const expectedEffect = call(
+    //     DI.getDependency(Dependency.POSTS_REPOSITORY).getPosts,
+    //   );
 
-      const expectedEffect = put(getPostsActions.success({ posts }));
+    //   expect(actualEffect).toStrictEqual(expectedEffect);
+    // });
 
-      expect(actualEffect).toStrictEqual(expectedEffect);
-    });
+    // it('should yield GetPostsActionTypes.SUCCESS effect', () => {
+    //   const actualEffect = gen.next(fakePosts).value;
 
-    it.todo('should yield GetPostsActionTypes.FAILURE effect');
+    //   const posts = fakePosts;
+
+    //   const expectedEffect = put(getPostsActions.success({ posts }));
+
+    //   expect(actualEffect).toStrictEqual(expectedEffect);
+    // });
+
+    // it.todo('should yield GetPostsActionTypes.FAILURE effect');
   });
 
   describe('postsSaga', () => {

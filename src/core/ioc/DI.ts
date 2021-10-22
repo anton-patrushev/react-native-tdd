@@ -11,6 +11,8 @@ const container: DIContainer = {
   [Dependency.POSTS_REPOSITORY]: FakePostRepository,
 };
 
+// Ignore from the coverage
+/* istanbul ignore next */
 function registerDependency<K extends keyof DIContainer>(
   key: K,
   dependency: DIContainer[K],
@@ -18,6 +20,8 @@ function registerDependency<K extends keyof DIContainer>(
   container[key] = dependency;
 }
 
+// Ignore from the coverage
+/* istanbul ignore next */
 function getDependency<K extends keyof DIContainer>(key: K): DIContainer[K] {
   return container[key];
 }
