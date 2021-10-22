@@ -13,7 +13,10 @@ import { StateType, ActionType } from 'typesafe-actions';
 declare module 'typesafe-actions' {
   interface Types {
     RootAction: ActionType<typeof import('../actions').default>;
-    // Store: StateType<typeof store>;
+    // Store: StateType<ReturnType<typeof import('../store').buildStore>>;
     RootState: StateType<ReturnType<typeof import('../reducers').default>>;
   }
+
+  export type RootState = Types['RootState'];
+  // export type Store = Types['Store'];
 }
