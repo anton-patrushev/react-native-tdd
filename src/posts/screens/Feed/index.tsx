@@ -3,11 +3,15 @@ import { SafeAreaView, Text, View } from 'react-native';
 
 import PostList from 'src/posts/components/PostList';
 
+import useFeedScreen from './hooks';
+
 import styles from './styles';
 
 interface IFeedScreenProps {}
 
 const FeedScreen: React.FC<IFeedScreenProps> = () => {
+  useFeedScreen();
+
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.header}>

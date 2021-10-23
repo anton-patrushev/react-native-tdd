@@ -68,6 +68,7 @@ describe('posts mappings', () => {
 
   it('should return successfully mapped posts and ignored useless props', () => {
     const incomingNetworkPosts: Array<any> = [
+      { id: null, title: 'null-id', body: '_null-id' },
       { id: '0', title: 'title', body: 'body', randomKey: { a: '123', b: 23 } },
       { id: '43', title: 'someValue', body: 'some body 222', _body: 'body: 2' },
       { id: '14532', title: 't', body: '2s', someKey: '123', a: 'cbd', d: 'C' },

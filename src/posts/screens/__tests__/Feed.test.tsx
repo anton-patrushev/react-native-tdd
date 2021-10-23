@@ -8,6 +8,10 @@ import { RootState } from 'typesafe-actions';
 import DI from 'src/core/ioc/DI';
 import { Dependency } from 'src/core/ioc/types';
 
+import { IToastNotificationService } from 'src/shared/services/notifications/local/toast/IToastNotificationService';
+import { ToastNotificationOptions } from 'src/shared/services/notifications/local/toast/types/ToastNotificationOptions';
+import { ToastNotificationType } from 'src/shared/services/notifications/local/toast/types/ToastNotificationType';
+
 import { IPostsRepository } from 'src/posts/data/network/IPostsRepository';
 import { Post } from 'src/posts/data/types/post';
 
@@ -36,14 +40,21 @@ describe('full integration FeedScreen', () => {
     Dependency.POSTS_REPOSITORY,
   );
 
+  const toastNotificationService: IToastNotificationService = DI.getDependency(
+    Dependency.TOAST_NOTIFICATION_SERVICE,
+  );
+
   let getPostsSpy: jest.SpyInstance<Promise<Post[]>, []>;
+  let showToastSpy: jest.SpyInstance;
 
   beforeEach(() => {
     getPostsSpy = jest.spyOn(postsRepository, 'getPosts');
+    showToastSpy = jest.spyOn(toastNotificationService, 'show');
   });
 
   afterEach(() => {
     getPostsSpy.mockRestore();
+    showToastSpy.mockRestore();
   });
 
   it('should renders loading indicator on mounting', async () => {
@@ -67,6 +78,8 @@ describe('full integration FeedScreen', () => {
     await waitFor(() => {
       expect(getPostsSpy).toHaveBeenCalledTimes(1);
     });
+
+    expect(showToastSpy).toHaveBeenCalledTimes(0);
   });
 
   it('should renders posts', async () => {
@@ -94,7 +107,42 @@ describe('full integration FeedScreen', () => {
     await waitFor(() => {
       expect(getPostsSpy).toHaveBeenCalledTimes(1);
     });
+
+    expect(showToastSpy).toHaveBeenCalledTimes(0);
   });
 
-  it.todo('should react on error state');
+  it('should react on error state', async () => {
+    getPostsSpy.mockImplementation(() => {
+      return Promise.reject("Does't matter for now");
+    });
+
+    showToastSpy.mockImplementation(() => {});
+
+    const screen = renderWithRedux(<FeedScreen />, { state: initialState });
+
+    await waitFor(() => {
+      expect(screen.queryByTestId(PostTestIDs.POST_LIST)).not.toBeNull();
+    });
+
+    // should finish loading
+    await waitFor(() => {
+      expect(screen.queryByTestId(PostTestIDs.POSTS_LOADING)).toBeNull();
+    });
+
+    await waitFor(() => {
+      expect(getPostsSpy).toHaveBeenCalledTimes(1);
+    });
+
+    await waitFor(() => {
+      expect(showToastSpy).toHaveBeenCalledTimes(1);
+
+      const showToastOptions: ToastNotificationOptions = {
+        type: ToastNotificationType.ERROR,
+        title: 'Loading posts failed',
+        body: 'Something went wrong',
+      };
+
+      expect(showToastSpy).toHaveBeenCalledWith(showToastOptions);
+    });
+  });
 });
