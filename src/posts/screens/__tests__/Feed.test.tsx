@@ -145,4 +145,39 @@ describe('full integration FeedScreen', () => {
       expect(showToastSpy).toHaveBeenCalledWith(showToastOptions);
     });
   });
+
+  it('should render only correct posts and ignore dummy nulls', async () => {
+    getPostsSpy.mockImplementation(() => {
+      const posts: Array<Post> = [
+        { id: 0, title: 'Some title', body: 'Some body' },
+        // @ts-ignore
+        0, // just to simulate dummy situation for missing post in store
+        { id: 2, title: 'Some title 2', body: 'Some body 2' },
+      ];
+      return Promise.resolve(posts);
+    });
+
+    showToastSpy.mockImplementation(() => {});
+
+    const screen = renderWithRedux(<FeedScreen />, { state: initialState });
+
+    await waitFor(() => {
+      expect(screen.queryByTestId(PostTestIDs.POST_LIST)).not.toBeNull();
+    });
+
+    // should finish loading
+    await waitFor(() => {
+      expect(screen.queryByTestId(PostTestIDs.POSTS_LOADING)).toBeNull();
+    });
+
+    await waitFor(() => {
+      expect(getPostsSpy).toHaveBeenCalledTimes(1);
+    });
+
+    await waitFor(async () => {
+      expect(await screen.findAllByTestId(PostTestIDs.POST)).toHaveLength(2);
+    });
+
+    expect(showToastSpy).toHaveBeenCalledTimes(0);
+  });
 });
