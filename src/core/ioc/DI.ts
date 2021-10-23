@@ -1,5 +1,5 @@
-import FakePostRepository from 'src/posts/api/network/FakePostsRepository';
-import { IPostsRepository } from 'src/posts/api/network/IPostsRepository';
+import FakePostRepository from 'src/posts/data/network/FakePostsRepository';
+import { IPostsRepository } from 'src/posts/data/network/IPostsRepository';
 
 import { Dependency } from './types';
 

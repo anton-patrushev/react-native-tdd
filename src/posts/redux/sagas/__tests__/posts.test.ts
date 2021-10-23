@@ -3,15 +3,14 @@
 import DI from 'src/core/ioc/DI';
 import { Dependency } from 'src/core/ioc/types';
 
-import { takeLatest, put, all, spawn, call } from 'redux-saga/effects';
+import { takeLatest, all, spawn } from 'redux-saga/effects';
 import { runSaga } from '@redux-saga/core';
 
 import { GetPostsActionTypes } from '../../actions/types';
 import { getPostsActions } from '../../actions/posts';
 import postsSaga, { getPostsSaga, getPostsWorker } from '../posts';
 
-import { fakePosts } from 'src/posts/data/fakePosts';
-import { IPostsRepository } from 'src/posts/api/network/IPostsRepository';
+import { IPostsRepository } from 'src/posts/data/network/IPostsRepository';
 import { Post } from 'src/posts/data/types/post';
 
 describe('posts sagas', () => {
@@ -79,33 +78,11 @@ describe('posts sagas', () => {
 
       const expectedActions = [
         getPostsActions.loading(),
-        getPostsActions.failure({ errorMessage: 'Something went wrong' }), // TODOß
+        getPostsActions.failure({ errorMessage: 'Something went wrong' }), // TODO
       ];
 
       expect(dispatched).toStrictEqual(expectedActions);
     });
-
-    // it('should call PostsRepository effect', () => {
-    //   const actualEffect = gen.next().value;
-
-    //   const expectedEffect = call(
-    //     DI.getDependency(Dependency.POSTS_REPOSITORY).getPosts,
-    //   );
-
-    //   expect(actualEffect).toStrictEqual(expectedEffect);
-    // });
-
-    // it('should yield GetPostsActionTypes.SUCCESS effect', () => {
-    //   const actualEffect = gen.next(fakePosts).value;
-
-    //   const posts = fakePosts;
-
-    //   const expectedEffect = put(getPostsActions.success({ posts }));
-
-    //   expect(actualEffect).toStrictEqual(expectedEffect);
-    // });
-
-    // it.todo('should yield GetPostsActionTypes.FAILURE effect');
   });
 
   describe('postsSaga', () => {

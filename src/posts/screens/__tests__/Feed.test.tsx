@@ -8,7 +8,7 @@ import { RootState } from 'typesafe-actions';
 import DI from 'src/core/ioc/DI';
 import { Dependency } from 'src/core/ioc/types';
 
-import { IPostsRepository } from 'src/posts/api/network/IPostsRepository';
+import { IPostsRepository } from 'src/posts/data/network/IPostsRepository';
 import { Post } from 'src/posts/data/types/post';
 
 import { renderWithRedux } from 'src/core/redux/testing/renderWithRedux';
