@@ -1,8 +1,12 @@
+import { mapPostsFromNetwork } from '../mappings/posts';
 import { IPostsRepository } from './IPostsRepository';
 
 class PostsRepository implements IPostsRepository {
-  getPosts = () => {
-    return Promise.resolve([]);
+  getPosts = async () => {
+    const result = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const json = await result.json();
+
+    return mapPostsFromNetwork(json);
   };
 }
 

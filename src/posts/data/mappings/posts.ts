@@ -1,7 +1,7 @@
 /* eslint-disable curly */
 import { Post } from 'src/posts/data/types/post';
 
-export function mapPostFromNetwork(apiPost: any): Post | null {
+function mapPostFromNetwork(apiPost: any): Post | null {
   if (typeof apiPost !== 'object') return null;
   if (apiPost?.id === undefined) return null;
   if (typeof apiPost?.title !== 'string') return null;
