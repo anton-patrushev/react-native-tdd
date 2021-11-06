@@ -7,7 +7,7 @@ interface IReduxProviderProps {}
 
 const store = buildStore();
 
-const ReduxProvider: React.FC<IReduxProviderProps> = props => {
+const ReduxProvider: React.FC<IReduxProviderProps> = (props) => {
   return <Provider store={store}>{props.children}</Provider>;
 };
 

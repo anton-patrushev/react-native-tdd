@@ -5,5 +5,5 @@ import postsSaga from 'src/posts/redux/sagas/posts';
 export default function* rootSaga() {
   const allSagas = [postsSaga];
 
-  yield all(allSagas.map(saga => spawn(saga)));
+  yield all(allSagas.map((saga) => spawn(saga)));
 }

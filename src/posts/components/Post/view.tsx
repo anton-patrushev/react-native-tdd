@@ -9,7 +9,7 @@ interface IPostViewProps {
   post: Post;
 }
 
-const PostView: React.FC<IPostViewProps> = props => {
+const PostView: React.FC<IPostViewProps> = (props) => {
   return (
     <View style={styles.tile} testID={PostTestIDs.POST}>
       <Text style={styles.title}>{props.post.title}</Text>

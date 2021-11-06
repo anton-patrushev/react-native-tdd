@@ -21,7 +21,7 @@ const renderItem: ListRenderItem<PostType['id']> = ({ item }) => {
   return <PostTile id={item} />;
 };
 
-const PostsListView: React.FC<IPostsListViewProps> = props => {
+const PostsListView: React.FC<IPostsListViewProps> = (props) => {
   if (props.isLoading) {
     return <ActivityIndicator testID={PostTestIDs.POSTS_LOADING} />;
   }

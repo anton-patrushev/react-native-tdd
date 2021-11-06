@@ -31,5 +31,5 @@ export function* getPostsSaga() {
 export default function* postsSaga() {
   const allPostsSagas = [getPostsSaga];
 
-  yield all(allPostsSagas.map(saga => spawn(saga)));
+  yield all(allPostsSagas.map((saga) => spawn(saga)));
 }

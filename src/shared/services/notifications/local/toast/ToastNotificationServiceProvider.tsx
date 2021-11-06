@@ -5,7 +5,7 @@ interface IToastNotificationServiceProviderProps {}
 
 const ToastNotificationServiceProvider: React.FC<IToastNotificationServiceProviderProps> =
   () => {
-    return <Toast ref={ref => Toast.setRef(ref)} />;
+    return <Toast ref={(ref) => Toast.setRef(ref)} />;
   };
 
 export default React.memo(ToastNotificationServiceProvider);

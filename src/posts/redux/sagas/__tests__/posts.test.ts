@@ -55,7 +55,7 @@ describe('posts sagas', () => {
 
       getPostsSpy.mockImplementationOnce(() => Promise.resolve(mockedPosts));
 
-      const dispatch = jest.fn(action => dispatched.push(action));
+      const dispatch = jest.fn((action) => dispatched.push(action));
       await runSaga({ dispatch }, getPostsWorker as any).toPromise();
 
       const expectedActions = [
@@ -73,7 +73,7 @@ describe('posts sagas', () => {
         Promise.reject("Doesn't matter"),
       );
 
-      const dispatch = jest.fn(action => dispatched.push(action));
+      const dispatch = jest.fn((action) => dispatched.push(action));
       await runSaga({ dispatch }, getPostsWorker as any).toPromise();
 
       const expectedActions = [

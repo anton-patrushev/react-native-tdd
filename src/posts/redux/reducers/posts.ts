@@ -12,7 +12,7 @@ const initialState: IPostsReducerState = {
 };
 
 const postsReducer = createReducer<IPostsReducerState>(initialState)
-  .handleType(GetPostsActionTypes.LOADING, state => ({
+  .handleType(GetPostsActionTypes.LOADING, (state) => ({
     ...state,
     loading: true,
     error: null,
@@ -27,7 +27,7 @@ const postsReducer = createReducer<IPostsReducerState>(initialState)
     loading: false,
     data: {
       byId: normalizeData(action.payload.posts),
-      ids: action.payload.posts.map(it => it.id),
+      ids: action.payload.posts.map((it) => it.id),
     },
     error: null,
   }));

@@ -10,8 +10,8 @@ interface IPostProps {
   id: PostType['id'];
 }
 
-const Post: React.FC<IPostProps> = props => {
-  const post = useSelector(state => getPostByID(state, props.id));
+const Post: React.FC<IPostProps> = (props) => {
+  const post = useSelector((state) => getPostByID(state, props.id));
 
   if (!post) {
     return null; // TODO: return placeholder
