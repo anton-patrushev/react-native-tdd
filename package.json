@@ -7,11 +7,21 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest --coverage --verbose",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "install:deps:js": "yarn",
+    "install:deps:ios": "pod install --project-directory=ios",
+    "remove:deps:js": "rm -rf node_modules",
+    "remove:deps:ios": "rm -rf ios/Pods",
+    "reinstall:deps:js": "yarn remove:deps:js && yarn install:deps:js",
+    "reinstall:deps:ios": "yarn remove:deps:ios && yarn install:deps:ios",
+    "reinstall:deps:all": "yarn reinstall:deps:js && yarn reinstall:deps:ios"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.0.6",
     "react": "17.0.2",
     "react-native": "0.66.0",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.9.0",
     "react-native-toast-message": "^1.6.0",
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
