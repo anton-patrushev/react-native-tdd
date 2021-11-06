@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DI should have initialValues before initialization: postsRepository 1`] = `
+FakePostsRepository {
+  "getPosts": [Function],
+}
+`;
+
+exports[`DI should have initialValues before initialization: toastNotificationService 1`] = `
+_FakeNotificationService {
+  "_showError": [Function],
+  "_showInfo": [Function],
+  "_showSuccess": [Function],
+  "show": [Function],
+}
+`;
