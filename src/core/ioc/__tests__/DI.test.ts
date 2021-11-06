@@ -37,4 +37,20 @@ describe('DI', () => {
     expect(dependency.uniqueDependencyKey).toBe(dependencyKey);
     expect(dependency.uniqueMethod).toBeCalledTimes(1);
   });
+
+  it('should throw error if dependency is missed from DI container', () => {
+    const dependencyKey = 'dependency-key' as Dependency;
+
+    // @ts-ignore
+    DI.registerDependency(dependencyKey, null);
+
+    const expectedError = new Error(
+      `Dependency with key:${dependencyKey} is missed from DI container`,
+    );
+
+    const callGetDependency = jest.fn(() => DI.getDependency(dependencyKey));
+
+    expect.assertions(1);
+    expect(callGetDependency).toThrowError(expectedError);
+  });
 });

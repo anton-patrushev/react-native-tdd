@@ -28,7 +28,13 @@ function registerDependency<K extends keyof DIContainer>(
 // Ignore from the coverage
 /* istanbul ignore next */
 function getDependency<K extends keyof DIContainer>(key: K): DIContainer[K] {
-  return container[key];
+  const dependency = container[key];
+
+  if (!dependency) {
+    throw new Error(`Dependency with key:${key} is missed from DI container`);
+  }
+
+  return dependency;
 }
 
 const DI = {
