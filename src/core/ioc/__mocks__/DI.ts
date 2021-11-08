@@ -9,7 +9,7 @@ const mockedContainer: DIContainer = {
   [Dependency.TOAST_NOTIFICATION_SERVICE]: FakeToastNotificationService,
 };
 
-const DI = {
+const MockedDI = {
   registerDependency: jest.fn(
     <K extends keyof DIContainer>(key: K, dependency: DIContainer[K]) => {
       mockedContainer[key] = dependency;
@@ -22,4 +22,4 @@ const DI = {
   ),
 };
 
-export default DI;
+export default MockedDI;
