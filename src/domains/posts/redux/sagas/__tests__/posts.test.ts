@@ -1,4 +1,4 @@
-// yarn jest src/posts/redux/sagas/__tests__/posts.test.ts --coverage
+// yarn jest src/domains/posts/redux/sagas/__tests__/posts.test.ts --coverage
 
 import DI from 'src/core/ioc/DI';
 import { Dependency } from 'src/core/ioc/types';
@@ -13,7 +13,12 @@ import postsSaga, { getPostsSaga, getPostsWorker } from '../posts';
 import { IPostsRepository } from 'src/domains/posts/data/network/IPostsRepository';
 import { Post } from 'src/domains/posts/data/types/post';
 
+jest.mock('src/core/ioc/DI');
+
 describe('posts sagas', () => {
+  afterAll(() => {
+    jest.unmock('src/core/ioc/DI');
+  });
   // TODO: review and rewrite ?
   describe('getPostsSaga', () => {
     const gen = getPostsSaga();
