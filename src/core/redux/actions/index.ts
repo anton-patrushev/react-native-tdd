@@ -1,4 +1,4 @@
-import * as postsActions from 'src/posts/redux/actions/posts';
+import * as postsActions from 'src/domains/posts/redux/actions/posts';
 
 export default {
   posts: postsActions,

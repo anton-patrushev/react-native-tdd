@@ -1,8 +1,8 @@
-import FakePostRepository from 'src/posts/data/network/FakePostsRepository';
-import { IPostsRepository } from 'src/posts/data/network/IPostsRepository';
+import FakePostRepository from 'src/domains/posts/data/network/FakePostsRepository';
+import { IPostsRepository } from 'src/domains/posts/data/network/IPostsRepository';
 
-import FakeToastNotificationService from 'src/shared/services/notifications/local/toast/FakeToastNotifcationService';
-import { IToastNotificationService } from 'src/shared/services/notifications/local/toast/IToastNotificationService';
+import FakeToastNotificationService from 'src/domains/shared/services/notifications/local/toast/FakeToastNotifcationService';
+import { IToastNotificationService } from 'src/domains/shared/services/notifications/local/toast/IToastNotificationService';
 
 import { Dependency } from './types';
 

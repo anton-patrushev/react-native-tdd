@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest --coverage --verbose",
+    "test": "jest --coverage --logHeapUsage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "install:deps:js": "yarn",
     "install:deps:ios": "pod install --project-directory=ios",
