@@ -1,38 +1,48 @@
 // yarn jest --coverage src/core/ioc/hooks/__tests__/useInjection.test.ts
 
 import { renderHook } from '@testing-library/react-hooks';
-import DI from '../../DI';
-import { Dependency } from '../../types';
 
 import useInjection from '../useInjection';
-
-jest.mock('src/core/ioc/DI');
+import { container } from 'src/core/ioc/container';
 
 describe('useInjection', () => {
-  const key = 'dependency-key' as Dependency;
-
   const dependency = { dependencyMethod: jest.fn(), dependencyProp: 'prop' };
 
-  afterAll(() => {
-    jest.unmock('src/core/ioc/DI');
-  });
+  const testIdentifier = Symbol.for('TestDependency');
 
   beforeAll(() => {
-    // @ts-ignore
-    DI.registerDependency(key, dependency);
+    container.unbindAll();
+
+    container
+      .bind<typeof dependency>(testIdentifier)
+      .toConstantValue(dependency);
   });
 
   afterAll(() => {
-    // @ts-ignore
-    DI.registerDependency(key, null);
+    container.unbindAll();
   });
 
-  it('should return dependency by provided key', () => {
-    const { result } = renderHook(() => useInjection(key));
+  describe('when the dependency was registered in IOC container', () => {
+    it('should return dependency by provided identifier', () => {
+      const { result } = renderHook(() => useInjection(testIdentifier));
 
-    const actualResult = result.current;
-    const expectedResult = dependency;
+      const actualResult = result.current;
+      const expectedResult = dependency;
 
-    expect(actualResult).toBe(expectedResult);
+      expect(actualResult).toBe(expectedResult);
+      expect(actualResult).toStrictEqual(expectedResult);
+    });
+  });
+
+  describe("when the dependency wasn't registered in IOC container", () => {
+    beforeAll(() => {
+      container.unbind(testIdentifier);
+    });
+
+    it('should throw an error', () => {
+      const { result } = renderHook(() => useInjection(testIdentifier));
+
+      expect(result.error).toBeDefined();
+    });
   });
 });

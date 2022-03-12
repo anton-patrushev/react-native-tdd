@@ -5,8 +5,8 @@ import { initializeDIContainer } from 'src/core/ioc/init';
 
 export const appRegister = () => App;
 
-export default function initApp(appName: string) {
-  initializeDIContainer();
+export default async function initApp(appName: string) {
+  await initializeDIContainer();
 
   return AppRegistry.registerComponent(appName, appRegister);
 }

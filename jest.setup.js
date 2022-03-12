@@ -11,3 +11,5 @@
 // // }));
 
 // jest.mock('react-native-toast-message');
+
+import 'reflect-metadata';

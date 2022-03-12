@@ -28,10 +28,10 @@ describe('when initApp called', () => {
     initializeDIContainerSpy.mockRestore();
   });
 
-  it('should register core application with provided appName', () => {
+  it('should register core application with provided appName', async () => {
     const appName = 'tdd-application';
 
-    initApp(appName);
+    await initApp(appName);
 
     expect(initializeDIContainerSpy).toHaveBeenCalledTimes(1);
     expect(registerComponentSpy).toHaveBeenCalledTimes(1);

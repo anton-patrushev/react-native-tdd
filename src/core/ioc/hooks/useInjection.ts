@@ -1,9 +1,8 @@
-import { DIContainer } from '../types/index';
+import { container } from 'src/core/ioc/container';
+import { interfaces } from 'inversify';
 
-import DI from '../DI';
-
-export default function useInjection<K extends keyof DIContainer>(
-  dependency: K,
-): DIContainer[K] {
-  return DI.getDependency(dependency);
+export default function useInjection<T>(
+  identifier: interfaces.ServiceIdentifier<T>,
+): T {
+  return container.get<T>(identifier);
 }
