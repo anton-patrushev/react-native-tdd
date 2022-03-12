@@ -1,4 +1,4 @@
-import { container } from 'src/core/ioc/container';
+import { container } from 'src/core/ioc/container/container';
 import { interfaces } from 'inversify';
 
 export default function useInjection<T>(

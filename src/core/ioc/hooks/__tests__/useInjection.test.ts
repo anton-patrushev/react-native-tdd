@@ -3,7 +3,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import useInjection from '../useInjection';
-import { container } from 'src/core/ioc/container';
+import { container } from 'src/core/ioc/container/container';
 
 describe('useInjection', () => {
   const dependency = { dependencyMethod: jest.fn(), dependencyProp: 'prop' };

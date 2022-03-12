@@ -5,7 +5,7 @@ import { AppRegistry } from 'react-native';
 import initApp, { appRegister } from '../initApp';
 
 import AppMock from 'src/core/app/__mocks__/App';
-import * as initIoCModule from 'src/core/ioc/init';
+import * as initIoCModule from 'src/core/ioc/container/init';
 
 jest.mock('src/core/app/App');
 jest.mock('src/core/ioc/init');
