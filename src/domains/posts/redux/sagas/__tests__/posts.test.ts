@@ -1,8 +1,5 @@
 // yarn jest src/domains/posts/redux/sagas/__tests__/posts.test.ts --coverage
 
-import DI from 'src/core/ioc/DI';
-import { Dependency } from 'src/core/ioc/types';
-
 import { takeLatest, all, spawn } from 'redux-saga/effects';
 import { runSaga } from '@redux-saga/core';
 
@@ -12,14 +9,22 @@ import postsSaga, { getPostsSaga, getPostsWorker } from '../posts';
 
 import { IPostsRepository } from 'src/domains/posts/data/network/IPostsRepository';
 import { Post } from 'src/domains/posts/data/types/post';
+import { container } from 'src/core/ioc/container/container';
+import { POSTS_MODULE_IDENTIFIERS } from 'src/domains/posts/ioc/modules/posts.symbols';
+import FakePostsRepository from 'src/domains/posts/data/network/FakePostsRepository';
 
-jest.mock('src/core/ioc/DI');
-
+// TODO: improve to rely just on IoC container (remove custom spying)
 describe('posts sagas', () => {
+  container.unbindAll();
+
+  container
+    .bind<IPostsRepository>(POSTS_MODULE_IDENTIFIERS.POSTS_REPOSITORY)
+    .toConstantValue(FakePostsRepository);
+
   afterAll(() => {
-    jest.unmock('src/core/ioc/DI');
+    container.unbindAll();
   });
-  // TODO: review and rewrite ?
+
   describe('getPostsSaga', () => {
     const gen = getPostsSaga();
 
@@ -40,8 +45,8 @@ describe('posts sagas', () => {
   });
 
   describe('getPostsWorker', () => {
-    const postsRepository: IPostsRepository = DI.getDependency(
-      Dependency.POSTS_REPOSITORY,
+    const postsRepository: IPostsRepository = container.get<IPostsRepository>(
+      POSTS_MODULE_IDENTIFIERS.POSTS_REPOSITORY,
     );
 
     let getPostsSpy: jest.SpyInstance<Promise<Post[]>, []>;

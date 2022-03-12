@@ -1,26 +1,26 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import DI from 'src/core/ioc/DI';
-import { Dependency } from 'src/core/ioc/types';
-
 import { getPostsError } from 'src/domains/posts/redux/selectors/posts';
 import { ToastNotificationType } from 'src/domains/shared/services/notifications/local/toast/types/ToastNotificationType';
+import useInjection from 'src/core/ioc/hooks/useInjection';
+import { TOAST_NOTIFICATIONS_IDENTIFIERS } from 'src/domains/shared/ioc/modules/toastNotifications.symbols';
+import { IToastNotificationService } from 'src/domains/shared/services/notifications/local/toast/IToastNotificationService';
 
 export default function useFeedScreen() {
+  const toastNotificationService = useInjection<IToastNotificationService>(
+    TOAST_NOTIFICATIONS_IDENTIFIERS.TOAST_NOTIFICATIONS_SERVICE,
+  );
+
   const postsLoadingError = useSelector(getPostsError);
 
   React.useEffect(() => {
     if (postsLoadingError) {
-      const ToastNotificationService = DI.getDependency(
-        Dependency.TOAST_NOTIFICATION_SERVICE,
-      );
-
-      ToastNotificationService.show({
+      toastNotificationService.show({
         type: ToastNotificationType.ERROR,
         title: 'Loading posts failed',
         body: postsLoadingError,
       });
     }
-  }, [postsLoadingError]);
+  }, [toastNotificationService, postsLoadingError]);
 }
