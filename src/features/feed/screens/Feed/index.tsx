@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import PostList from 'src/domains/posts/components/PostList';
 
@@ -13,17 +13,9 @@ const FeedScreen: React.FC<IFeedScreenProps> = () => {
   useFeedScreen();
 
   return (
-    <SafeAreaView style={styles.screen}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Header</Text>
-      </View>
-      <View style={styles.content}>
-        <PostList />
-      </View>
-      <View style={styles.bottom}>
-        <Text style={styles.title}>Bottom</Text>
-      </View>
-    </SafeAreaView>
+    <View style={styles.content}>
+      <PostList />
+    </View>
   );
 };
 
