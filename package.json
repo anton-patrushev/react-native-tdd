@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start:development": "ENV_FILE=.env.development react-native start",
+    "start:staging": "ENV_FILE=.env.staging react-native start",
+    "start:qa": "ENV_FILE=.env.qa react-native start",
+    "start:production": "ENV_FILE=.env.production react-native start",
     "test": "jest --coverage --logHeapUsage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "install:deps:js": "yarn",
@@ -19,12 +20,13 @@
     "reinstall:deps:all": "yarn reinstall:deps:js && yarn reinstall:deps:ios"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "6.2.0",
     "@react-navigation/native": "6.0.6",
     "@react-navigation/native-stack": "6.2.5",
-    "@react-navigation/bottom-tabs": "6.2.0",
     "inversify": "6.0.1",
     "react": "17.0.2",
     "react-native": "0.66.0",
+    "react-native-config": "1.4.5",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "3.9.0",
     "react-native-toast-message": "1.6.0",
