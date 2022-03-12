@@ -8,7 +8,7 @@ import AppMock from 'src/core/app/__mocks__/App';
 import * as initIoCModule from 'src/core/ioc/container/init';
 
 jest.mock('src/core/app/App');
-jest.mock('src/core/ioc/init');
+jest.mock('src/core/ioc/container/init');
 
 describe('when initApp called', () => {
   let registerComponentSpy: jest.SpyInstance;
