@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FeedScreen from 'src/domains/posts/screens/Feed';
+import FeedScreen from 'src/features/feed/screens/Feed';
 
 import ReduxProvider from 'src/core/redux/provider/index';
 import ToastNotificationServiceProvider from 'src/domains/shared/services/notifications/local/toast/ToastNotificationServiceProvider';
