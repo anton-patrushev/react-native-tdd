@@ -10,8 +10,10 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "install:deps:js": "yarn",
     "install:deps:ios": "pod install --project-directory=ios",
+    "install:deps:all": "yarn install:deps:js && yarn install:deps:ios",
     "remove:deps:js": "rm -rf node_modules",
     "remove:deps:ios": "rm -rf ios/Pods",
+    "remove:deps:all": "yarn remove:deps:js && yarn remove:deps:ios",
     "reinstall:deps:js": "yarn remove:deps:js && yarn install:deps:js",
     "reinstall:deps:ios": "yarn remove:deps:ios && yarn install:deps:ios",
     "reinstall:deps:all": "yarn reinstall:deps:js && yarn reinstall:deps:ios"
@@ -19,6 +21,7 @@
   "dependencies": {
     "@react-navigation/native": "6.0.6",
     "@react-navigation/native-stack": "6.2.5",
+    "inversify": "6.0.1",
     "react": "17.0.2",
     "react-native": "0.66.0",
     "react-native-safe-area-context": "3.3.2",
@@ -27,6 +30,7 @@
     "react-redux": "7.2.6",
     "redux": "4.1.2",
     "redux-saga": "1.1.3",
+    "reflect-metadata": "0.1.13",
     "typesafe-actions": "5.1.0"
   },
   "devDependencies": {
