@@ -4,25 +4,21 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { BottomTabScreens } from 'src/features/app/routers/tabs/bottomTab.consts';
 import {
+  DefaultBottomTabBarOptions,
   EventsScreenOptions,
   FeedScreenOptions,
+  SettingsScreenOptions,
 } from 'src/features/app/routers/tabs/bottomTab.options';
 
 import FeedScreen from 'src/features/feed/screens/Feed';
 import EventsScreen from 'src/features/events/screens/Events';
+import SettingsScreen from 'src/features/settings/screens/Settings';
 
 const BottomTab = createBottomTabNavigator();
 
 export const BottomTabRouter = () => {
   return (
-    <BottomTab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: { backgroundColor: '#000000' },
-        tabBarIcon: () => null,
-        tabBarLabelPosition: 'below-icon',
-        tabBarLabelStyle: { fontSize: 14, paddingBottom: 14 },
-      }}>
+    <BottomTab.Navigator screenOptions={DefaultBottomTabBarOptions}>
       <BottomTab.Screen
         name={BottomTabScreens.FEED}
         component={FeedScreen}
@@ -32,6 +28,11 @@ export const BottomTabRouter = () => {
         name={BottomTabScreens.EVENTS}
         component={EventsScreen}
         options={EventsScreenOptions}
+      />
+      <BottomTab.Screen
+        name={BottomTabScreens.SETTINGS}
+        component={SettingsScreen}
+        options={SettingsScreenOptions}
       />
     </BottomTab.Navigator>
   );
