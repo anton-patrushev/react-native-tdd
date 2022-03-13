@@ -78,19 +78,19 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    enableHermes: true,  // clean and rebuild if changing
-    bundleInDebug: false,
-    bundleInQa: true,
-    bundleInRelease: true,
+    enableHermes        : false,  // clean and rebuild if changing
+    bundleInDebug       : false,
+    bundleInQa          : true,
+    bundleInRelease     : true,
     bundleInLocalstaging: false,
-    bundleInStaging: true,
+    bundleInStaging     : true,
 ]
 
 project.ext.envConfigFiles = [
-    release: ".env.production",
-    debug: ".env.development",
-    qa: ".env.qa",
-    staging: ".env.staging",
+    release     : ".env.production",
+    debug       : ".env.development",
+    qa          : ".env.qa",
+    staging     : ".env.staging",
     localstaging: ".env.staging",
 ]
 
@@ -150,7 +150,7 @@ android {
         applicationId "com.tdd"
         // required for "react-native-config"
         resValue "string", "build_config_package", "com.tdd"
-        manifestPlaceholders = [label: 'TDD']
+        resValue "string", "app_name", "TDD"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -187,6 +187,7 @@ android {
             signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            resValue "string", "app_name", "TDD"
         }
         qa {
             debuggable false
@@ -196,7 +197,7 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             applicationIdSuffix ".qa"
-            manifestPlaceholders = [label: 'TDD QA']
+            resValue "string", "app_name", "TDD QA"
             matchingFallbacks = ['release']
         }
         staging {
@@ -207,7 +208,7 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             applicationIdSuffix ".staging"
-            manifestPlaceholders = [label: 'TDD Staging']
+            resValue "string", "app_name", "TDD Staging"
             matchingFallbacks = ['release']
         }
         localstaging {
@@ -219,7 +220,7 @@ android {
                 }
             }
             applicationIdSuffix ".staging"
-            manifestPlaceholders = [label: 'TDD Staging']
+            resValue "string", "app_name", "TDD Staging"
             matchingFallbacks = ['debug']
         }
         debug {
@@ -231,7 +232,7 @@ android {
                 }
             }
             applicationIdSuffix ".development"
-            manifestPlaceholders = [label: 'TDD Development']
+            resValue "string", "app_name", "TDD Development"
         }
     }
 
@@ -245,7 +246,7 @@ android {
             def abi = output.getFilter(OutputFile.ABI)
             if (abi != null) {  // null for the universal-debug, universal-release variants
                 output.versionCodeOverride =
-                        defaultConfig.versionCode * 1000 + versionCodes.get(abi)
+                    defaultConfig.versionCode * 1000 + versionCodes.get(abi)
             }
 
         }
@@ -260,16 +261,16 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
-        exclude group:'com.facebook.fbjni'
+        exclude group: 'com.facebook.fbjni'
     }
 
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.facebook.flipper'
-        exclude group:'com.squareup.okhttp3', module:'okhttp'
+        exclude group: 'com.facebook.flipper'
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     }
 
     debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.facebook.flipper'
+        exclude group: 'com.facebook.flipper'
     }
 
     if (enableHermes) {
