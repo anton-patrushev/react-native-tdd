@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "start": "react-native start",
     "start:development": "ENVFILE=.env.development react-native start",
     "start:staging": "ENVFILE=.env.staging react-native start",
     "start:qa": "ENVFILE=.env.qa react-native start",
