@@ -21,6 +21,11 @@
 		3A9214BF27E3CCD000E2FA6A /* libPods-TDD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-TDD.a */; };
 		3A9214C127E3CCD000E2FA6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		3A9214C227E3CCD000E2FA6A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		3A9214D127E3D0E900E2FA6A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		3A9214D227E3D0E900E2FA6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3A9214D427E3D0E900E2FA6A /* libPods-TDD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-TDD.a */; };
+		3A9214D627E3D0E900E2FA6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		3A9214D727E3D0E900E2FA6A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		6172F2D35A4C3AA820D92908 /* libPods-TDD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-TDD.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-TDD-TDDTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-TDD-TDDTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -51,6 +56,8 @@
 		3A315D1927E3C7CE00390EE2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A9214C927E3CCD000E2FA6A /* TDD Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TDD Staging.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9214CC27E3CD2D00E2FA6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A9214DE27E3D0E900E2FA6A /* TDD QA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TDD QA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9214E127E3D14D00E2FA6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-TDD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TDD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-TDD-TDDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDD-TDDTests.debug.xcconfig"; path = "Target Support Files/Pods-TDD-TDDTests/Pods-TDD-TDDTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TDD/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -90,6 +97,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A9214BF27E3CCD000E2FA6A /* libPods-TDD.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A9214D327E3D0E900E2FA6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A9214D427E3D0E900E2FA6A /* libPods-TDD.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +167,14 @@
 			path = "TDD Staging";
 			sourceTree = "<group>";
 		};
+		3A9214E027E3D12600E2FA6A /* TDD QA */ = {
+			isa = PBXGroup;
+			children = (
+				3A9214E127E3D14D00E2FA6A /* Info.plist */,
+			);
+			path = "TDD QA";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +188,7 @@
 				13B07FAE1A68108700A75B9A /* TDD */,
 				3A315D0527E3C24400390EE2 /* TDD Development */,
 				3A9214CB27E3CCF600E2FA6A /* TDD Staging */,
+				3A9214E027E3D12600E2FA6A /* TDD QA */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* TDDTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -183,6 +207,7 @@
 				00E356EE1AD99517003FC87E /* TDDTests.xctest */,
 				3A315D1727E3C28600390EE2 /* TDD Development.app */,
 				3A9214C927E3CCD000E2FA6A /* TDD Staging.app */,
+				3A9214DE27E3D0E900E2FA6A /* TDD QA.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -288,6 +313,28 @@
 			productReference = 3A9214C927E3CCD000E2FA6A /* TDD Staging.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3A9214CD27E3D0E900E2FA6A /* TDD QA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A9214DB27E3D0E900E2FA6A /* Build configuration list for PBXNativeTarget "TDD QA" */;
+			buildPhases = (
+				3A9214CE27E3D0E900E2FA6A /* [CP] Check Pods Manifest.lock */,
+				3A9214CF27E3D0E900E2FA6A /* Start Packager */,
+				3A9214D027E3D0E900E2FA6A /* Sources */,
+				3A9214D327E3D0E900E2FA6A /* Frameworks */,
+				3A9214D527E3D0E900E2FA6A /* Resources */,
+				3A9214D827E3D0E900E2FA6A /* Bundle React Native code and images */,
+				3A9214D927E3D0E900E2FA6A /* [CP] Embed Pods Frameworks */,
+				3A9214DA27E3D0E900E2FA6A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TDD QA";
+			productName = TDD;
+			productReference = 3A9214DE27E3D0E900E2FA6A /* TDD QA.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -321,6 +368,7 @@
 				13B07F861A680F5B00A75B9A /* TDD */,
 				3A315D0627E3C28600390EE2 /* TDD Development */,
 				3A9214B827E3CCD000E2FA6A /* TDD Staging */,
+				3A9214CD27E3D0E900E2FA6A /* TDD QA */,
 				00E356ED1AD99517003FC87E /* TDDTests */,
 			);
 		};
@@ -358,6 +406,15 @@
 			files = (
 				3A9214C127E3CCD000E2FA6A /* LaunchScreen.storyboard in Resources */,
 				3A9214C227E3CCD000E2FA6A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A9214D527E3D0E900E2FA6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A9214D627E3D0E900E2FA6A /* LaunchScreen.storyboard in Resources */,
+				3A9214D727E3D0E900E2FA6A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +630,95 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TDD/Pods-TDD-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3A9214CE27E3D0E900E2FA6A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TDD-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A9214CF27E3D0E900E2FA6A /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3A9214D827E3D0E900E2FA6A /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		3A9214D927E3D0E900E2FA6A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TDD/Pods-TDD-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TDD/Pods-TDD-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TDD/Pods-TDD-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A9214DA27E3D0E900E2FA6A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TDD/Pods-TDD-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TDD/Pods-TDD-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TDD/Pods-TDD-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3E482C27206C4DEF2FE45063 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -722,6 +868,15 @@
 			files = (
 				3A9214BC27E3CCD000E2FA6A /* AppDelegate.m in Sources */,
 				3A9214BD27E3CCD000E2FA6A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A9214D027E3D0E900E2FA6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A9214D127E3D0E900E2FA6A /* AppDelegate.m in Sources */,
+				3A9214D227E3D0E900E2FA6A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,6 +1092,56 @@
 			};
 			name = Release;
 		};
+		3A9214DC27E3D0E900E2FA6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0A881CF5CF3F2B244570E2A /* Pods-TDD.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "$(SRCROOT)/TDD QA/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.TDD.qa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		3A9214DD27E3D0E900E2FA6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00AAFFCFCFDA5787532823F /* Pods-TDD.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "$(SRCROOT)/TDD QA/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.TDD.qa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1097,6 +1302,15 @@
 			buildConfigurations = (
 				3A9214C727E3CCD000E2FA6A /* Debug */,
 				3A9214C827E3CCD000E2FA6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A9214DB27E3D0E900E2FA6A /* Build configuration list for PBXNativeTarget "TDD QA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A9214DC27E3D0E900E2FA6A /* Debug */,
+				3A9214DD27E3D0E900E2FA6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
